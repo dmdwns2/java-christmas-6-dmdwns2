@@ -17,6 +17,7 @@ public class OrderParser {
 
     public Map<Menu, Integer> parse(String input) {
         Map<Menu, Integer> menus = new HashMap<>();
+        validator.convertMenuQuantity(input);
         validator.match(input);
         Pattern pattern = Pattern.compile("([^,]+)-(\\d+)");
         Matcher matcher = pattern.matcher(input);

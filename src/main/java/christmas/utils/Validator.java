@@ -41,7 +41,10 @@ public class Validator {
 
     public void convertMenuQuantity(String input) {
         try {
-            Integer.parseInt(input);
+            String[] quantity = input.split("-");
+            for (int i = 1; i < quantity.length; i++) {
+                Integer.parseInt(quantity[i]);
+            }
         } catch (NumberFormatException e) {
             throw new IllegalArgumentException(ErrMsg.INVALID_ORDER.getMessage());
         }
@@ -71,7 +74,6 @@ public class Validator {
             String quantity = matcher.group(2);
             invalidOrder(menuName);
             duplicateMenu(menus, Menu.valueOf(menuName));
-            convertMenuQuantity(quantity);
             sum += Integer.parseInt(quantity);
             sizeMenuQuantity(sum);
             menus.put(Menu.valueOf(menuName), Integer.parseInt(quantity));

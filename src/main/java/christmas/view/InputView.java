@@ -26,6 +26,7 @@ public class InputView {
         output.printReadOrder();
         String input = Console.readLine();
         validator.empty(input);
+        validator.convertMenuQuantity(input);
         validator.match(input);
         return input;
     }
