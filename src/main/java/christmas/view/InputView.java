@@ -4,15 +4,16 @@ import camp.nextstep.edu.missionutils.Console;
 import christmas.enums.Calendar;
 import christmas.utils.Validator;
 
-public class InputView {
-    private final OutputView output;
+public class InputView implements Input {
+    private final Output output;
     private final Validator validator;
 
-    public InputView(OutputView output, Validator validator) {
+    public InputView(Output output, Validator validator) {
         this.output = output;
         this.validator = validator;
     }
 
+    @Override
     public int readDate() {
         output.printReadDate();
         String input = Console.readLine();
@@ -22,6 +23,7 @@ public class InputView {
         return Integer.parseInt(input);
     }
 
+    @Override
     public String readOrder() {
         output.printReadOrder();
         String input = Console.readLine();
