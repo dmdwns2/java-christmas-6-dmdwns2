@@ -6,13 +6,13 @@ import christmas.domain.OrderManager;
 import christmas.enums.Calendar;
 import christmas.utils.Validator;
 
-public class inputView {
+public class InputView {
     private final OutputView output;
     private final Validator validator;
     private final OrderManager orderManager;
     private static final Calendar THIS_MONTH = Calendar.DECEMBER;
 
-    public inputView(OutputView output, Validator validator, OrderManager orderManager) {
+    public InputView(OutputView output, Validator validator, OrderManager orderManager) {
         this.output = output;
         this.validator = validator;
         this.orderManager = orderManager;
