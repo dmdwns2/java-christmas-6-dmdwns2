@@ -21,4 +21,12 @@ public class Date {
             throw new IllegalArgumentException(ErrMsg.INVALID_DATE.getMessage());
         }
     }
+
+    public Calendar getMonth() {
+        return month;
+    }
+
+    public int getInputDay() {
+        return inputDay;
+    }
 }
