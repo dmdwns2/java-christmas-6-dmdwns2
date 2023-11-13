@@ -50,6 +50,15 @@ public class Validator {
         }
     }
 
+    public void invalidOrderInput(String input) {
+        String[] orderInput = input.split(",");
+        for (String s : orderInput) {
+            if (!s.contains("-")) {
+                throw new IllegalArgumentException(ErrMsg.INVALID_ORDER.getMessage());
+            }
+        }
+    }
+
     public void duplicateMenu(Map<Menu, Integer> menus, Menu menu) {
         if (menus.containsKey(menu)) {
             throw new IllegalArgumentException(ErrMsg.INVALID_ORDER.getMessage());
