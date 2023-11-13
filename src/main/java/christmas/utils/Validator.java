@@ -43,7 +43,7 @@ public class Validator {
         try {
             String[] quantity = input.split("-");
             for (int i = 1; i < quantity.length; i++) {
-                Integer.parseInt(quantity[i]);
+                Integer.parseInt(String.valueOf(quantity[i].charAt(0)));
             }
         } catch (NumberFormatException e) {
             throw new IllegalArgumentException(ErrMsg.INVALID_ORDER.getMessage());
