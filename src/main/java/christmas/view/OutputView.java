@@ -1,26 +1,23 @@
 package christmas.view;
 
-import christmas.enums.ErrMsg;
+import christmas.enums.Calendar;
 import christmas.enums.InputMsg;
 
 public class OutputView {
-    public void emptyInput() {
-        System.out.println(ErrMsg.EMPTY_INPUT);
-    }
-
-    public void invalidOrder() {
-        System.out.println(ErrMsg.INVALID_ORDER);
-    }
-
-    public void invalidDate() {
-        System.out.println(ErrMsg.INVALID_DATE);
+    public void printIntro() {
+        System.out.println(InputMsg.INTRO.getMessage());
     }
 
     public void printReadDate() {
-        System.out.println(InputMsg.READ_DATE);
+        System.out.println(InputMsg.READ_DATE.getMessage());
     }
 
     public void printReadOrder() {
-        System.out.println(InputMsg.READ_ORDER);
+        System.out.println(InputMsg.READ_ORDER.getMessage());
+    }
+
+    public void printPreview(Calendar month, int date) {
+        System.out.println(month.getMonth() + InputMsg.MONTH.getMessage() +
+                date + InputMsg.DAY.getMessage() + InputMsg.PREVIEW.getMessage());
     }
 }
