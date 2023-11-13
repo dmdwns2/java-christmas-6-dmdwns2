@@ -1,12 +1,11 @@
 package christmas.domain;
 
 import christmas.Order;
-import christmas.view.OutputView;
 
 public class OrderManager {
     private final OrderParser orderParser;
 
-    public OrderManager(OutputView output, OrderParser orderParser) {
+    public OrderManager(OrderParser orderParser) {
         this.orderParser = orderParser;
     }
 
