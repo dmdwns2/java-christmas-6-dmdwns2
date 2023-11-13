@@ -1,7 +1,6 @@
 package christmas.domain;
 
 import christmas.utils.Validator;
-import christmas.view.OutputView;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -14,7 +13,7 @@ class OrderParserTest {
 
     @BeforeEach
     void setUp() {
-        validator = new Validator(new OutputView());
+        validator = new Validator();
         orderParser = new OrderParser(validator);
     }
 
@@ -33,7 +32,7 @@ class OrderParserTest {
 
     @Test
     void 메뉴_수량이_최대를_넘을_때() {
-        String input = "아이스크림-3,초코케이크-20";
+        String input = "아이스크림-3,초코케이크-20,제로콜라-16";
         assertThatExceptionOfType(IllegalArgumentException.class)
                 .isThrownBy(() -> orderParser.parse(input));
     }
