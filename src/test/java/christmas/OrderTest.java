@@ -1,7 +1,6 @@
 package christmas;
 
 import christmas.enums.Menu;
-import christmas.view.OutputView;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -13,24 +12,22 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 
 class OrderTest {
     private Map<Menu, Integer> menus;
-    private OutputView output;
 
     @BeforeEach
     void setUp() {
         menus = new HashMap<>();
-        output = new OutputView();
     }
 
     @Test
     void 주문생성시_빈메뉴일때_예외발생() {
-        assertThrows(IllegalArgumentException.class, () -> new Order(output, menus));
+        assertThrows(IllegalArgumentException.class, () -> new Order(menus));
     }
 
     @Test
     void 주문생성시_총합이_최대치를_초과할때_예외발생() {
         menus.put(Menu.레드와인, 15);
         menus.put(Menu.바비큐립, 10);
-        assertThrows(IllegalArgumentException.class, () -> new Order(output, menus));
+        assertThrows(IllegalArgumentException.class, () -> new Order(menus));
     }
 
     @Test
@@ -38,7 +35,7 @@ class OrderTest {
         menus.put(Menu.샴페인, 5);
         menus.put(Menu.레드와인, 3);
         menus.put(Menu.제로콜라, 2);
-        assertThrows(IllegalArgumentException.class, () -> new Order(output, menus));
+        assertThrows(IllegalArgumentException.class, () -> new Order(menus));
     }
 
     @Test
@@ -47,7 +44,7 @@ class OrderTest {
         menus.put(Menu.바비큐립, 5);
         menus.put(Menu.샴페인, 2);
 
-        Order order = new Order(output, menus);
+        Order order = new Order(menus);
 
         assertThat(order).isNotNull();
     }

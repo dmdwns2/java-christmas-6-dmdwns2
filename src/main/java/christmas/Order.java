@@ -1,17 +1,15 @@
 package christmas;
 
+import christmas.enums.ErrMsg;
 import christmas.enums.Menu;
 import christmas.enums.MenuType;
-import christmas.view.OutputView;
 
 import java.util.Map;
 
 public class Order {
     private final Map<Menu, Integer> menus;
-    private final OutputView output;
 
-    public Order(OutputView output, Map<Menu, Integer> menus) {
-        this.output = output;
+    public Order(Map<Menu, Integer> menus) {
         validateEmpty(menus);
         validateSize(menus);
         validateType(menus);
@@ -20,8 +18,7 @@ public class Order {
 
     private void validateEmpty(Map<Menu, Integer> menus) {
         if (menus.isEmpty()) {
-            output.invalidOrder();
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(ErrMsg.EMPTY_INPUT.getMessage());
         }
     }
 
@@ -30,8 +27,7 @@ public class Order {
         for (int value : menus.values()) {
             total += value;
             if (total > Menu.getMaxQuantity()) {
-                output.invalidOrder();
-                throw new IllegalArgumentException();
+                throw new IllegalArgumentException(ErrMsg.INVALID_ORDER.getMessage());
             }
         }
     }
@@ -43,7 +39,6 @@ public class Order {
                 return;
             }
         }
-        output.invalidOrder();
-        throw new IllegalArgumentException();
+        throw new IllegalArgumentException(ErrMsg.INVALID_ORDER.getMessage());
     }
 }
