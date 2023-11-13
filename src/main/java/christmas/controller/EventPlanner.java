@@ -1,6 +1,7 @@
 package christmas.controller;
 
 import christmas.Date;
+import christmas.Order;
 import christmas.domain.DateService;
 import christmas.domain.OrderService;
 import christmas.view.Input;
@@ -22,7 +23,7 @@ public class EventPlanner {
     public void run() {
         output.printIntro();
         Date date = dateService.create(input.readDate());
-        String order = input.readOrder();
+        Order order = orderService.create(input.readOrder());
         output.printPreview(date.getMonth(), date.getInputDay());
     }
 }

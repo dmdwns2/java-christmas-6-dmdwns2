@@ -1,10 +1,7 @@
 package christmas;
 
 import christmas.controller.EventPlanner;
-import christmas.domain.DateManager;
-import christmas.domain.DateService;
-import christmas.domain.OrderParser;
-import christmas.domain.OrderService;
+import christmas.domain.*;
 import christmas.utils.Validator;
 import christmas.view.Input;
 import christmas.view.InputView;
@@ -17,7 +14,8 @@ public class Application {
         Validator validator = new Validator();
         Input input = new InputView(output, validator);
         DateService dateService = new DateManager();
-        OrderService orderService = new OrderParser(validator);
+        Parser parser = new OrderParser(validator);
+        OrderService orderService = new OrderManager(parser);
         EventPlanner eventPlanner = new EventPlanner(input, output, dateService, orderService);
 
         eventPlanner.run();

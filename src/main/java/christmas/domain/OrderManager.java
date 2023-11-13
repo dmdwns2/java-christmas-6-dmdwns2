@@ -2,14 +2,14 @@ package christmas.domain;
 
 import christmas.Order;
 
-public class OrderManager {
-    private final OrderService orderService;
+public class OrderManager implements OrderService {
+    private final Parser parser;
 
-    public OrderManager(OrderService orderService) {
-        this.orderService = orderService;
+    public OrderManager(Parser parser) {
+        this.parser = parser;
     }
 
     public Order create(String input) {
-        return new Order(orderService.parse(input));
+        return new Order(parser.parse(input));
     }
 }

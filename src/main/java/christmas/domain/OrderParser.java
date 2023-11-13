@@ -8,7 +8,7 @@ import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class OrderParser implements OrderService {
+public class OrderParser implements Parser {
     private final Validator validator;
 
     public OrderParser(Validator validator) {
