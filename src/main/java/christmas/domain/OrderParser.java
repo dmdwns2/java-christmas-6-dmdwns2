@@ -20,12 +20,7 @@ public class OrderParser {
         validator.match(input);
         Pattern pattern = Pattern.compile("([^,]+)-(\\d+)");
         Matcher matcher = pattern.matcher(input);
-        validator.parseOrderMatcher(matcher);
         while (matcher.find()) {
-            validator.invalidMenu(matcher.group(1));
-            validator.duplicateMenu(menus, Menu.valueOf(matcher.group(1)));
-            validator.convertMenuQuantity(matcher.group(2));
-            validator.sizeMenuQuantity(matcher.group(2));
             menus.put(Menu.valueOf(matcher.group(1)), Integer.parseInt(matcher.group(2)));
         }
         return menus;
