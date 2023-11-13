@@ -8,13 +8,14 @@ import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class OrderParser {
+public class OrderParser implements OrderService {
     private final Validator validator;
 
     public OrderParser(Validator validator) {
         this.validator = validator;
     }
 
+    @Override
     public Map<Menu, Integer> parse(String input) {
         Map<Menu, Integer> menus = new HashMap<>();
         validator.invalidOrderInput(input);

@@ -3,13 +3,13 @@ package christmas.domain;
 import christmas.Order;
 
 public class OrderManager {
-    private final OrderParser orderParser;
+    private final OrderService orderService;
 
-    public OrderManager(OrderParser orderParser) {
-        this.orderParser = orderParser;
+    public OrderManager(OrderService orderService) {
+        this.orderService = orderService;
     }
 
     public Order create(String input) {
-        return new Order(orderParser.parse(input));
+        return new Order(orderService.parse(input));
     }
 }
