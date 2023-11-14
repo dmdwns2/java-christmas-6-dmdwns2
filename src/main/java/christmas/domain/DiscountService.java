@@ -13,4 +13,10 @@ public interface DiscountService {
     int weekend(Date date, Order order);
 
     int special(Date date);
+
+    int calculateTotalBenefitsPrice(boolean isGift, int priceAfterChristmasDDayDiscount,
+                                    int priceAfterWeekdayDiscount, int priceAfterWeekendDiscount,
+                                    int priceAfterSpecialDayDiscount);
+
+    int calculatePriceAfterDiscount(boolean isGift, int totalPriceBeforeDiscount, int totalBenefitsPrice);
 }

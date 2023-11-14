@@ -49,5 +49,14 @@ public class EventPlanner {
         int priceAfterSpecialDayDiscount = discountService.special(date);
         output.printBenefitsDetails(isGift, priceAfterChristmasDDayDiscount,
                 priceAfterWeekdayDiscount, priceAfterWeekendDiscount, priceAfterSpecialDayDiscount);
+
+    }
+
+    private void calculate(boolean isGift, int totalPriceBeforeDiscount, int priceAfterChristmasDDayDiscount,
+                           int priceAfterWeekdayDiscount, int priceAfterWeekendDiscount,
+                           int priceAfterSpecialDayDiscount) {
+        int totalBenefitsPrice = discountService.calculateTotalBenefitsPrice(isGift, priceAfterChristmasDDayDiscount,
+                priceAfterWeekdayDiscount, priceAfterWeekendDiscount, priceAfterSpecialDayDiscount);
+        int priceAfterDiscount = discountService.calculatePriceAfterDiscount(isGift, totalPriceBeforeDiscount, totalBenefitsPrice);
     }
 }
