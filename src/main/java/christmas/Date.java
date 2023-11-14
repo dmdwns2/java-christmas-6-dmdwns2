@@ -14,10 +14,10 @@ public class Date {
     }
 
     public void validate(Calendar calendar, int inputDay) {
-        if (calendar.getMonth() != Calendar.getThisMonth().getMonth()) {
+        if (Calendar.getEventEndDay() > calendar.getDays()) {
             throw new IllegalArgumentException(ErrMsg.INVALID_DATE.getMessage());
         }
-        if (inputDay < calendar.getStartDay() || inputDay > calendar.getDays()) {
+        if (inputDay < Calendar.getEventStartDay() || inputDay > Calendar.getEventEndDay()) {
             throw new IllegalArgumentException(ErrMsg.INVALID_DATE.getMessage());
         }
     }

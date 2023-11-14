@@ -15,6 +15,7 @@ public enum Calendar {
     DECEMBER(12, 31);
 
     private static final int EVENT_START_DAY = 1;
+    private static final int EVENT_END_DAY = 25;
     private static final Calendar THIS_MONTH = DECEMBER;
 
     private final int month;
@@ -33,8 +34,12 @@ public enum Calendar {
         return month;
     }
 
-    public int getStartDay() {
+    public static int getEventStartDay() {
         return EVENT_START_DAY;
+    }
+
+    public static int getEventEndDay() {
+        return EVENT_END_DAY;
     }
 
     public static Calendar getThisMonth() {

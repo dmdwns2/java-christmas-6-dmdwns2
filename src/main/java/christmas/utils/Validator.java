@@ -25,9 +25,9 @@ public class Validator {
         }
     }
 
-    public void sizeDate(String input, Calendar calendar) {
+    public void sizeDate(String input) {
         int date = Integer.parseInt(input);
-        if (date < calendar.getStartDay() || date > calendar.getDays()) {
+        if (date < Calendar.getEventStartDay() || date > Calendar.getEventEndDay()) {
             throw new IllegalArgumentException(ErrMsg.INVALID_DATE.getMessage());
         }
     }

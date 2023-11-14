@@ -1,7 +1,6 @@
 package christmas.view;
 
 import camp.nextstep.edu.missionutils.Console;
-import christmas.enums.Calendar;
 import christmas.utils.Validator;
 
 public class InputView implements Input {
@@ -20,7 +19,7 @@ public class InputView implements Input {
             String input = Console.readLine();
             validator.empty(input);
             validator.convertDate(input);
-            validator.sizeDate(input, Calendar.getThisMonth());
+            validator.sizeDate(input);
             return Integer.parseInt(input);
         } catch (IllegalArgumentException e) {
             System.out.println(e.getMessage());
