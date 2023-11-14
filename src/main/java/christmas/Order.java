@@ -16,6 +16,10 @@ public class Order {
         this.menus = menus;
     }
 
+    public Map<Menu, Integer> getMenus() {
+        return menus;
+    }
+
     private void validateEmpty(Map<Menu, Integer> menus) {
         if (menus.isEmpty()) {
             throw new IllegalArgumentException(ErrMsg.EMPTY_INPUT.getMessage());

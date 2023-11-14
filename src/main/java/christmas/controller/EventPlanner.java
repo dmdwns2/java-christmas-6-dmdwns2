@@ -25,5 +25,8 @@ public class EventPlanner {
         Date date = dateService.create(input.readDate());
         Order order = orderService.create(input.readOrder());
         output.printPreview(date.getMonth(), date.getInputDay());
+        output.printMenus(order);
+        int totalPriceBeforeDiscount = orderService.calculateTotalPriceBeforeDiscount(order);
+
     }
 }
