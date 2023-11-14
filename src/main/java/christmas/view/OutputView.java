@@ -48,4 +48,14 @@ public class OutputView implements Output {
         System.out.println(OutputMsg.TITLE_TOTAL_PRICE_BEFOR_DISCOUNT.getMessage());
         System.out.println(decimalFormat.format(price) + OutputMsg.MONETARY_UNIT.getMessage());
     }
+
+    @Override
+    public void printGiftMenu(boolean isGift) {
+        System.out.println(OutputMsg.TITLE_GIFT_MENU.getMessage());
+        if (isGift) {
+            System.out.println(Menu.getGiftMenu().getName() + " " + Menu.getGiftMenuQuantity() + OutputMsg.QUANTITY_UNIT.getMessage());
+            return;
+        }
+        System.out.println(OutputMsg.NONE.getMessage());
+    }
 }

@@ -16,7 +16,8 @@ public class Application {
         DateService dateService = new DateManager();
         Parser parser = new OrderParser(validator);
         OrderService orderService = new OrderManager(parser);
-        EventPlanner eventPlanner = new EventPlanner(input, output, dateService, orderService);
+        DiscountService discountService = new DiscountManager();
+        EventPlanner eventPlanner = new EventPlanner(input, output, dateService, orderService, discountService);
 
         eventPlanner.run();
     }

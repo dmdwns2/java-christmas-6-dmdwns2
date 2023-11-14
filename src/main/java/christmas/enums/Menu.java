@@ -19,6 +19,8 @@ public enum Menu {
 
     private final static int MAX_QUANTITY = 20;
     private final static int MIN_QUANTITY = 1;
+    private final static Menu GIFT_MENU = 샴페인;
+    private final static int GIFT_MENU_QUANTITY = 1;
 
     private final String name;
     private final int price;
@@ -45,6 +47,14 @@ public enum Menu {
 
     public static int getMinQuantity() {
         return MIN_QUANTITY;
+    }
+
+    public static Menu getGiftMenu() {
+        return GIFT_MENU;
+    }
+
+    public static int getGiftMenuQuantity() {
+        return GIFT_MENU_QUANTITY;
     }
 
     public String getName() {

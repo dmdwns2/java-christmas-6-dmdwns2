@@ -14,9 +14,11 @@ public enum Calendar {
     NOVEMBER(11, 30),
     DECEMBER(12, 31);
 
-    private static final int EVENT_START_DAY = 1;
-    private static final int EVENT_END_DAY = 25;
     private static final Calendar THIS_MONTH = DECEMBER;
+    private static final int EVENT_START_DAY = 1;
+    private static final int CHRISTMAS_D_DAY_EVENT_START_DAY = 1;
+    private static final int CHRISTMAS_D_DAY_EVENT_END_DAY = 25;
+    private static final int EVENT_END_DAY = THIS_MONTH.getDays();
 
     private final int month;
     private final int days;
@@ -26,12 +28,8 @@ public enum Calendar {
         this.days = days;
     }
 
-    public int getDays() {
-        return days;
-    }
-
-    public int getMonth() {
-        return month;
+    public static Calendar getThisMonth() {
+        return THIS_MONTH;
     }
 
     public static int getEventStartDay() {
@@ -42,7 +40,19 @@ public enum Calendar {
         return EVENT_END_DAY;
     }
 
-    public static Calendar getThisMonth() {
-        return THIS_MONTH;
+    public static int getChristmasDDayEventStartDay() {
+        return CHRISTMAS_D_DAY_EVENT_START_DAY;
+    }
+
+    public static int getChristmasDDayEventEndDay() {
+        return CHRISTMAS_D_DAY_EVENT_END_DAY;
+    }
+
+    public int getDays() {
+        return days;
+    }
+
+    public int getMonth() {
+        return month;
     }
 }

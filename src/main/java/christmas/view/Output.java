@@ -15,4 +15,6 @@ public interface Output {
     void printMenus(Order order);
 
     void printTotalPriceBeforDiscount(int price);
+
+    void printGiftMenu(boolean isGift);
 }
