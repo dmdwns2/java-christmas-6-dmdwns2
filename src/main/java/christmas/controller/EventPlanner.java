@@ -29,27 +29,27 @@ public class EventPlanner {
         output.printIntro();
         Date date = dateService.create(input.readDate());
         Order order = orderService.create(input.readOrder());
+        int totalPriceBeforeDiscount = orderService.calculateTotalPriceBeforeDiscount(order);
         output.printPreview(date.getCalendar(), date.getInputDay());
         output.printMenus(order);
-        int totalPriceBeforeDiscount = orderService.calculateTotalPriceBeforeDiscount(order);
         output.printTotalPriceBeforDiscount(totalPriceBeforeDiscount);
-        discount(totalPriceBeforeDiscount, date, order);
+        discount(date, order, totalPriceBeforeDiscount);
     }
 
-    private void discount(int totalPriceBeforeDiscount, Date date, Order order) {
+    private void discount(Date date, Order order, int totalPriceBeforeDiscount) {
         if (totalPriceBeforeDiscount < Discount.MIN_PRICE.getPrice()) {
             output.printNonBenefitsDetails();
             return;
         }
         boolean isGift = discountService.isGift(totalPriceBeforeDiscount);
-        output.printGiftMenu(isGift);
         int priceAfterChristmasDDayDiscount = discountService.christmasDDay(date);
         int priceAfterWeekdayDiscount = discountService.weekday(date, order);
         int priceAfterWeekendDiscount = discountService.weekend(date, order);
         int priceAfterSpecialDayDiscount = discountService.special(date);
+        output.printGiftMenu(isGift);
         output.printBenefitsDetails(isGift, priceAfterChristmasDDayDiscount,
                 priceAfterWeekdayDiscount, priceAfterWeekendDiscount, priceAfterSpecialDayDiscount);
-
+        calculate(isGift, totalPriceBeforeDiscount, priceAfterChristmasDDayDiscount, priceAfterWeekdayDiscount, priceAfterWeekendDiscount, priceAfterSpecialDayDiscount);
     }
 
     private void calculate(boolean isGift, int totalPriceBeforeDiscount, int priceAfterChristmasDDayDiscount,
@@ -58,5 +58,7 @@ public class EventPlanner {
         int totalBenefitsPrice = discountService.calculateTotalBenefitsPrice(isGift, priceAfterChristmasDDayDiscount,
                 priceAfterWeekdayDiscount, priceAfterWeekendDiscount, priceAfterSpecialDayDiscount);
         int priceAfterDiscount = discountService.calculatePriceAfterDiscount(isGift, totalPriceBeforeDiscount, totalBenefitsPrice);
+        output.printTotalBenefitsPrice(totalBenefitsPrice);
+        output.printPriceAfterDiscount(priceAfterDiscount);
     }
 }

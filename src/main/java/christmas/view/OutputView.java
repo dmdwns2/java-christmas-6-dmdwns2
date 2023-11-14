@@ -56,6 +56,7 @@ public class OutputView implements Output {
         System.out.println(TITLE_GIFT_MENU.getMessage());
         if (isGift) {
             System.out.println(Menu.getGiftMenu().getName() + " " + Menu.getGiftMenuQuantity() + QUANTITY_UNIT.getMessage());
+            System.out.println();
             return;
         }
         System.out.println(NONE.getMessage());
@@ -79,6 +80,23 @@ public class OutputView implements Output {
     public void printNonBenefitsDetails() {
         System.out.println(TITLE_BENEFITS_DETAILS.getMessage());
         System.out.println(NONE.getMessage());
+        System.out.println();
+    }
+
+    @Override
+    public void printTotalBenefitsPrice(int totalBenefitsPrice) {
+        System.out.println(TITLE_TOTAL_BENEFIT_PRICE.getMessage());
+        if (totalBenefitsPrice != 0) {
+            System.out.print("-");
+        }
+        System.out.println(decimalFormat.format(totalBenefitsPrice) + MONETARY_UNIT.getMessage());
+        System.out.println();
+    }
+
+    @Override
+    public void printPriceAfterDiscount(int priceAfterDiscount) {
+        System.out.println(TITLE_PRICE_AFTER_DISCOUNT.getMessage());
+        System.out.println(decimalFormat.format(priceAfterDiscount) + MONETARY_UNIT.getMessage());
         System.out.println();
     }
 

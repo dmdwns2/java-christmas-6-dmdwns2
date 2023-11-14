@@ -23,4 +23,8 @@ public interface Output {
                               int priceAfterSpecialDayDiscount);
 
     void printNonBenefitsDetails();
+
+    void printTotalBenefitsPrice(int totalBenefitsPrice);
+
+    void printPriceAfterDiscount(int priceAfterDiscount);
 }
