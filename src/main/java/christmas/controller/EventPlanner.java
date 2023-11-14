@@ -5,6 +5,7 @@ import christmas.Order;
 import christmas.domain.DateService;
 import christmas.domain.DiscountService;
 import christmas.domain.OrderService;
+import christmas.enums.Discount;
 import christmas.view.Input;
 import christmas.view.Output;
 
@@ -36,10 +37,17 @@ public class EventPlanner {
     }
 
     private void discount(int totalPriceBeforeDiscount, Date date, Order order) {
+        if (totalPriceBeforeDiscount < Discount.MIN_PRICE.getPrice()) {
+            output.printNonBenefitsDetails();
+            return;
+        }
         boolean isGift = discountService.isGift(totalPriceBeforeDiscount);
         output.printGiftMenu(isGift);
         int priceAfterChristmasDDayDiscount = discountService.christmasDDay(date);
         int priceAfterWeekdayDiscount = discountService.weekday(date, order);
         int priceAfterWeekendDiscount = discountService.weekend(date, order);
+        int priceAfterSpecialDayDiscount = discountService.special(date);
+        output.printBenefitsDetails(isGift, priceAfterChristmasDDayDiscount,
+                priceAfterWeekdayDiscount, priceAfterWeekendDiscount, priceAfterSpecialDayDiscount);
     }
 }

@@ -17,4 +17,10 @@ public interface Output {
     void printTotalPriceBeforDiscount(int price);
 
     void printGiftMenu(boolean isGift);
+
+    void printBenefitsDetails(boolean isGift, int priceAfterChristmasDDayDiscount,
+                              int priceAfterWeekdayDiscount, int priceAfterWeekendDiscount,
+                              int priceAfterSpecialDayDiscount);
+
+    void printNonBenefitsDetails();
 }
