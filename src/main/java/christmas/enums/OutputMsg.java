@@ -1,6 +1,6 @@
 package christmas.enums;
 
-public enum InputMsg {
+public enum OutputMsg {
     MONTH("월"),
     DAY("일"),
     INTRO("안녕하세요! 우테코 식당 12월 이벤트 플래너입니다."),
@@ -10,7 +10,7 @@ public enum InputMsg {
 
     private final String message;
 
-    InputMsg(String message) {
+    OutputMsg(String message) {
         this.message = message;
     }
 
