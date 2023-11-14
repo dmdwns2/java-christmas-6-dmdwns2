@@ -45,7 +45,7 @@ public class OutputView implements Output {
 
     @Override
     public void printTotalPriceBeforDiscount(int price) {
-        System.out.println(OutputMsg.TOTAL_PRICE_BEFOR_DISCOUNT);
-        System.out.println(price + OutputMsg.MONETARY_UNIT.getMessage());
+        System.out.println(OutputMsg.TOTAL_PRICE_BEFOR_DISCOUNT.getMessage());
+        System.out.println(decimalFormat.format(price) + OutputMsg.MONETARY_UNIT.getMessage());
     }
 }
