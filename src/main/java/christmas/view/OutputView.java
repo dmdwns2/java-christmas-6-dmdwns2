@@ -36,7 +36,7 @@ public class OutputView implements Output {
     @Override
     public void printMenus(Order order) {
         Map<Menu, Integer> menus = order.getMenus();
-        System.out.println(OutputMsg.ORDER_MENUS.getMessage());
+        System.out.println(OutputMsg.TITLE_ORDER_MENUS.getMessage());
         for (Menu key : menus.keySet()) {
             System.out.println(key.getName() + " " + menus.get(key) + OutputMsg.QUANTITY_UNIT.getMessage());
         }
@@ -45,7 +45,7 @@ public class OutputView implements Output {
 
     @Override
     public void printTotalPriceBeforDiscount(int price) {
-        System.out.println(OutputMsg.TOTAL_PRICE_BEFOR_DISCOUNT.getMessage());
+        System.out.println(OutputMsg.TITLE_TOTAL_PRICE_BEFOR_DISCOUNT.getMessage());
         System.out.println(decimalFormat.format(price) + OutputMsg.MONETARY_UNIT.getMessage());
     }
 }
