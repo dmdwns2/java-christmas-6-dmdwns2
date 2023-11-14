@@ -8,7 +8,6 @@ import christmas.enums.Menu;
 
 import java.time.DayOfWeek;
 import java.time.LocalDate;
-import java.util.HashMap;
 import java.util.Map;
 
 public class DiscountManager implements DiscountService {
@@ -42,7 +41,7 @@ public class DiscountManager implements DiscountService {
     public int weekday(Date date, Order order) {
         LocalDate specificDate = LocalDate.of(Calendar.getThisYear(), date.getCalendar().getMonth(), date.getInputDay());
         DayOfWeek dayOfWeek = specificDate.getDayOfWeek();
-        Map<Menu, Integer> menus = new HashMap<>();
+        Map<Menu, Integer> menus = order.getMenus();
         boolean isWeekday = dayOfWeek != DayOfWeek.SATURDAY && dayOfWeek != DayOfWeek.SUNDAY;
         int quantityOfDessert = counter.countDessert(menus);
 
@@ -56,7 +55,7 @@ public class DiscountManager implements DiscountService {
     public int weekend(Date date, Order order) {
         LocalDate specificDate = LocalDate.of(Calendar.getThisYear(), date.getCalendar().getMonth(), date.getInputDay());
         DayOfWeek dayOfWeek = specificDate.getDayOfWeek();
-        Map<Menu, Integer> menus = new HashMap<>();
+        Map<Menu, Integer> menus = order.getMenus();
         boolean isWeekend = dayOfWeek == DayOfWeek.SATURDAY || dayOfWeek == DayOfWeek.SUNDAY;
         int quantityOfMain = counter.countMain(menus);
 
