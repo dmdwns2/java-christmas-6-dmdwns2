@@ -3,6 +3,7 @@ package christmas.utils;
 import christmas.enums.Calendar;
 import christmas.enums.ErrMsg;
 import christmas.enums.Menu;
+import christmas.enums.MenuType;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -87,6 +88,17 @@ public class Validator {
             sizeMenuQuantity(sum);
             menus.put(Menu.valueOf(menuName), Integer.parseInt(quantity));
         }
+        invalidMenuType(menus);
+    }
+
+    private void invalidMenuType(Map<Menu, Integer> menus) {
+        for (Menu key : menus.keySet()) {
+            MenuType menuType = key.getType();
+            if (menuType == MenuType.에피타이저 || menuType == MenuType.메인 || menuType == MenuType.디저트) {
+                return;
+            }
+        }
+        throw new IllegalArgumentException(ErrMsg.INVALID_ORDER.getMessage());
     }
 
     private void sizeMenuQuantity(int sumOfQuantity) {
