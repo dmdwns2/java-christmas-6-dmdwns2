@@ -13,6 +13,8 @@ import java.util.Map;
 
 public class DiscountManager implements DiscountService {
     private Counter counter;
+    private static final DayOfWeek SPECIAL_DAY = DayOfWeek.SUNDAY;
+    private static final int CHRISTMAS_DAY = 25;
 
     public DiscountManager(Counter counter) {
         this.counter = counter;
@@ -60,6 +62,18 @@ public class DiscountManager implements DiscountService {
 
         if (isWeekend) {
             return quantityOfMain * Discount.WEEKEND_PRICE.getPrice();
+        }
+        return 0;
+    }
+
+    @Override
+    public int special(Date date) {
+        LocalDate specificDate = LocalDate.of(Calendar.getThisYear(), date.getCalendar().getMonth(), date.getInputDay());
+        DayOfWeek dayOfWeek = specificDate.getDayOfWeek();
+        boolean isSpecialDay = dayOfWeek == SPECIAL_DAY;
+
+        if (isSpecialDay || date.getInputDay() == CHRISTMAS_DAY) {
+            return Discount.SPECIAL_PRICE.getPrice();
         }
         return 0;
     }

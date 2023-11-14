@@ -11,4 +11,6 @@ public interface DiscountService {
     int weekday(Date date, Order order);
 
     int weekend(Date date, Order order);
+
+    int special(Date date);
 }
