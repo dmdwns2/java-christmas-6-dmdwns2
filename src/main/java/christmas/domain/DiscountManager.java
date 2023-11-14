@@ -12,7 +12,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class DiscountManager implements DiscountService {
-    private Counter counter;
+    private final Counter counter;
     private static final DayOfWeek SPECIAL_DAY = DayOfWeek.SUNDAY;
     private static final int CHRISTMAS_DAY = 25;
 
@@ -76,25 +76,5 @@ public class DiscountManager implements DiscountService {
             return Discount.SPECIAL_PRICE.getPrice();
         }
         return 0;
-    }
-
-    @Override
-    public int calculateTotalBenefitsPrice(boolean isGift, int priceAfterChristmasDDayDiscount,
-                                           int priceAfterWeekdayDiscount, int priceAfterWeekendDiscount,
-                                           int priceAfterSpecialDayDiscount) {
-        int total = 0;
-        if (isGift) {
-            total += Menu.getGiftMenu().getPrice();
-        }
-        total += priceAfterChristmasDDayDiscount + priceAfterWeekdayDiscount + priceAfterWeekendDiscount + priceAfterSpecialDayDiscount;
-        return total;
-    }
-
-    @Override
-    public int calculatePriceAfterDiscount(boolean isGift, int totalPriceBeforeDiscount, int totalBenefitsPrice) {
-        if (isGift) {
-            totalBenefitsPrice -= Menu.getGiftMenu().getPrice();
-        }
-        return totalPriceBeforeDiscount - totalBenefitsPrice;
     }
 }

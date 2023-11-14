@@ -18,7 +18,8 @@ public class Application {
         OrderService orderService = new OrderManager(parser);
         Counter counter = new DiscountMenuCounter();
         DiscountService discountService = new DiscountManager(counter);
-        EventPlanner eventPlanner = new EventPlanner(input, output, dateService, orderService, discountService);
+        Calculator calculator = new CalculateManager();
+        EventPlanner eventPlanner = new EventPlanner(input, output, dateService, orderService, discountService, calculator);
 
         eventPlanner.run();
     }
