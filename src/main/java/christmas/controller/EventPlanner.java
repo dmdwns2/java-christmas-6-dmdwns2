@@ -27,6 +27,6 @@ public class EventPlanner {
         output.printPreview(date.getMonth(), date.getInputDay());
         output.printMenus(order);
         int totalPriceBeforeDiscount = orderService.calculateTotalPriceBeforeDiscount(order);
-
+        output.printTotalPriceBeforDiscount(totalPriceBeforeDiscount);
     }
 }

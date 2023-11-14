@@ -13,4 +13,6 @@ public interface Output {
     void printPreview(Calendar calendar, int data);
 
     void printMenus(Order order);
+
+    void printTotalPriceBeforDiscount(int price);
 }

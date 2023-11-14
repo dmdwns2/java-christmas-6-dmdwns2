@@ -5,9 +5,12 @@ import christmas.enums.Calendar;
 import christmas.enums.Menu;
 import christmas.enums.OutputMsg;
 
+import java.text.DecimalFormat;
 import java.util.Map;
 
 public class OutputView implements Output {
+    private static final DecimalFormat decimalFormat = new DecimalFormat("###,###");
+
     @Override
     public void printIntro() {
         System.out.println(OutputMsg.INTRO.getMessage());
@@ -38,5 +41,11 @@ public class OutputView implements Output {
             System.out.println(key.getName() + " " + menus.get(key) + OutputMsg.QUANTITY_UNIT.getMessage());
         }
         System.out.println();
+    }
+
+    @Override
+    public void printTotalPriceBeforDiscount(int price) {
+        System.out.println(OutputMsg.TOTAL_PRICE_BEFOR_DISCOUNT);
+        System.out.println(price + OutputMsg.MONETARY_UNIT.getMessage());
     }
 }
