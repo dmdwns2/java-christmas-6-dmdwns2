@@ -15,22 +15,32 @@ public class InputView implements Input {
 
     @Override
     public int readDate() {
-        output.printReadDate();
-        String input = Console.readLine();
-        validator.empty(input);
-        validator.convertDate(input);
-        validator.sizeDate(input, Calendar.getThisMonth());
-        return Integer.parseInt(input);
+        try {
+            output.printReadDate();
+            String input = Console.readLine();
+            validator.empty(input);
+            validator.convertDate(input);
+            validator.sizeDate(input, Calendar.getThisMonth());
+            return Integer.parseInt(input);
+        } catch (IllegalArgumentException e) {
+            System.out.println(e.getMessage());
+            return readDate();
+        }
     }
 
     @Override
     public String readOrder() {
-        output.printReadOrder();
-        String input = Console.readLine();
-        validator.empty(input);
-        validator.invalidOrderInput(input);
-        validator.convertMenuQuantity(input);
-        validator.match(input);
-        return input;
+        try {
+            output.printReadOrder();
+            String input = Console.readLine();
+            validator.empty(input);
+            validator.invalidOrderInput(input);
+            validator.convertMenuQuantity(input);
+            validator.match(input);
+            return input;
+        } catch (IllegalArgumentException e) {
+            System.out.println(e.getMessage());
+            return readOrder();
+        }
     }
 }

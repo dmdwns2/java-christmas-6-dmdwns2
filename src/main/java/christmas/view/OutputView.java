@@ -36,7 +36,7 @@ public class OutputView implements Output {
     @Override
     public void printMenus(Order order) {
         Map<Menu, Integer> menus = order.getMenus();
-        System.out.println(OutputMsg.ORDER_MENUS);
+        System.out.println(OutputMsg.ORDER_MENUS.getMessage());
         for (Menu key : menus.keySet()) {
             System.out.println(key.getName() + " " + menus.get(key) + OutputMsg.QUANTITY_UNIT.getMessage());
         }
