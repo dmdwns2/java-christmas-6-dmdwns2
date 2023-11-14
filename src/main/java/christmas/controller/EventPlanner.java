@@ -2,10 +2,12 @@ package christmas.controller;
 
 import christmas.Date;
 import christmas.Order;
+import christmas.domain.Calculator;
 import christmas.domain.DateService;
 import christmas.domain.DiscountService;
 import christmas.domain.OrderService;
 import christmas.enums.Discount;
+import christmas.enums.EventBadge;
 import christmas.view.Input;
 import christmas.view.Output;
 
@@ -15,14 +17,15 @@ public class EventPlanner {
     private final DateService dateService;
     private final OrderService orderService;
     private final DiscountService discountService;
+    private final Calculator calculator;
 
-    public EventPlanner(Input input, Output output
-            , DateService dateService, OrderService orderService, DiscountService discountService) {
+    public EventPlanner(Input input, Output output, DateService dateService, OrderService orderService, DiscountService discountService, Calculator calculator) {
         this.input = input;
         this.output = output;
         this.dateService = dateService;
         this.orderService = orderService;
         this.discountService = discountService;
+        this.calculator = calculator;
     }
 
     public void run() {
@@ -55,10 +58,12 @@ public class EventPlanner {
     private void calculate(boolean isGift, int totalPriceBeforeDiscount, int priceAfterChristmasDDayDiscount,
                            int priceAfterWeekdayDiscount, int priceAfterWeekendDiscount,
                            int priceAfterSpecialDayDiscount) {
-        int totalBenefitsPrice = discountService.calculateTotalBenefitsPrice(isGift, priceAfterChristmasDDayDiscount,
+        int totalBenefitsPrice = calculator.totalBenefitsPrice(isGift, priceAfterChristmasDDayDiscount,
                 priceAfterWeekdayDiscount, priceAfterWeekendDiscount, priceAfterSpecialDayDiscount);
-        int priceAfterDiscount = discountService.calculatePriceAfterDiscount(isGift, totalPriceBeforeDiscount, totalBenefitsPrice);
+        int priceAfterDiscount = calculator.priceAfterDiscount(isGift, totalPriceBeforeDiscount, totalBenefitsPrice);
+        EventBadge eventBadge = calculator.eventBadge(totalBenefitsPrice);
         output.printTotalBenefitsPrice(totalBenefitsPrice);
         output.printPriceAfterDiscount(priceAfterDiscount);
+        output.printEventBadge(eventBadge);
     }
 }

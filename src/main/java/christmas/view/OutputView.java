@@ -2,6 +2,7 @@ package christmas.view;
 
 import christmas.Order;
 import christmas.enums.Calendar;
+import christmas.enums.EventBadge;
 import christmas.enums.Menu;
 
 import java.text.DecimalFormat;
@@ -98,6 +99,12 @@ public class OutputView implements Output {
         System.out.println(TITLE_PRICE_AFTER_DISCOUNT.getMessage());
         System.out.println(decimalFormat.format(priceAfterDiscount) + MONETARY_UNIT.getMessage());
         System.out.println();
+    }
+
+    @Override
+    public void printEventBadge(EventBadge eventBadge) {
+        System.out.println(TITLE_THIS_MONTH_EVENT_BADGE.getMessage());
+        System.out.println(eventBadge.getName());
     }
 
     private void printGiftDetails(boolean isGift) {

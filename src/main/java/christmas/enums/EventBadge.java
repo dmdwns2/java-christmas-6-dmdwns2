@@ -14,6 +14,10 @@ public enum EventBadge {
         this.discountPrice = discountPrice;
     }
 
+    public String getName() {
+        return name;
+    }
+
     public static EventBadge getEventBadge(int price) {
         if (price >= SANTA.discountPrice) {
             return SANTA;

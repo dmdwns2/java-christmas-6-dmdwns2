@@ -16,7 +16,7 @@ public enum OutputMsg {
     TITLE_BENEFITS_DETAILS("<혜택 내역>"),
     TITLE_TOTAL_BENEFIT_PRICE("<총혜택 금액>"),
     TITLE_PRICE_AFTER_DISCOUNT("<할인 후 예상 결제 금액>"),
-    TITLE_THIS_MONTH_EVENT_BADGE(Calendar.getThisMonth() + MONTH_UNIT.getMessage() + " 이벤트 배지"),
+    TITLE_THIS_MONTH_EVENT_BADGE("<" + Calendar.getThisMonth().getMonth() + MONTH_UNIT.getMessage() + " 이벤트 배지>"),
     DETAILS_CHRISTMAS_D_DAY("크리스마스 디데이 할인: -"),
     DETAILS_WEEKDAY("평일 할인: -"),
     DETAILS_WEEKEND("주말 할인: -"),

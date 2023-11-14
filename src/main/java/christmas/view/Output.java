@@ -2,6 +2,7 @@ package christmas.view;
 
 import christmas.Order;
 import christmas.enums.Calendar;
+import christmas.enums.EventBadge;
 
 public interface Output {
     void printIntro();
@@ -27,4 +28,6 @@ public interface Output {
     void printTotalBenefitsPrice(int totalBenefitsPrice);
 
     void printPriceAfterDiscount(int priceAfterDiscount);
+
+    void printEventBadge(EventBadge eventBadge);
 }
