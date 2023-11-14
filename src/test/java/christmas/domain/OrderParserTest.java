@@ -50,4 +50,11 @@ class OrderParserTest {
         assertThatExceptionOfType(IllegalArgumentException.class)
                 .isThrownBy(() -> orderParser.parse(input));
     }
+
+    @Test
+    void 음료만_주문() {
+        String input = "샴페인-3,제로콜라-5,레드와인-2";
+        assertThatExceptionOfType(IllegalArgumentException.class)
+                .isThrownBy(() -> orderParser.parse(input));
+    }
 }
