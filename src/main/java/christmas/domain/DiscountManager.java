@@ -3,6 +3,7 @@ package christmas.domain;
 import christmas.Date;
 import christmas.Order;
 import christmas.enums.Calendar;
+import christmas.enums.Discount;
 import christmas.enums.Menu;
 
 import java.time.DayOfWeek;
@@ -12,11 +13,6 @@ import java.util.Map;
 
 public class DiscountManager implements DiscountService {
     private Counter counter;
-    private static final int GIFT_PRICE = 120_000;
-    private static final int CHRISTMAS_D_DAY_START_PRICE = 1_000;
-    private static final int CHRISTMAS_D_DAY_INCREASE_PRICE = 100;
-    private static final int WEEKDAY_PRICE = 2_023;
-    private static final int WEEKEND_PRICE = 2_023;
 
     public DiscountManager(Counter counter) {
         this.counter = counter;
@@ -24,7 +20,7 @@ public class DiscountManager implements DiscountService {
 
     @Override
     public boolean isGift(int price) {
-        if (price >= GIFT_PRICE) {
+        if (price >= Discount.GIFT_PRICE.getPrice()) {
             return true;
         }
         return false;
@@ -36,7 +32,8 @@ public class DiscountManager implements DiscountService {
                 || date.getInputDay() < Calendar.getChristmasDDayEventStartDay()) {
             return 0;
         }
-        return CHRISTMAS_D_DAY_START_PRICE + CHRISTMAS_D_DAY_INCREASE_PRICE * (date.getInputDay() - 1);
+        return Discount.CHRISTMAS_D_DAY_START_PRICE.getPrice()
+                + Discount.CHRISTMAS_D_DAY_INCREASE_PRICE.getPrice() * (date.getInputDay() - 1);
     }
 
     @Override
@@ -48,7 +45,7 @@ public class DiscountManager implements DiscountService {
         int quantityOfDessert = counter.countDessert(menus);
 
         if (isWeekday) {
-            return quantityOfDessert * WEEKDAY_PRICE;
+            return quantityOfDessert * Discount.WEEKDAY_PRICE.getPrice();
         }
         return 0;
     }
@@ -62,7 +59,7 @@ public class DiscountManager implements DiscountService {
         int quantityOfMain = counter.countMain(menus);
 
         if (isWeekend) {
-            return quantityOfMain * WEEKEND_PRICE;
+            return quantityOfMain * Discount.WEEKEND_PRICE.getPrice();
         }
         return 0;
     }
