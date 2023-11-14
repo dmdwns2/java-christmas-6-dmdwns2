@@ -4,12 +4,12 @@ import christmas.enums.Calendar;
 import christmas.enums.ErrMsg;
 
 public class Date {
-    private final Calendar month;
+    private final Calendar calendar;
     private final int inputDay;
 
     public Date(Calendar calendar, int inputDay) {
         validate(calendar, inputDay);
-        this.month = calendar;
+        this.calendar = calendar;
         this.inputDay = inputDay;
     }
 
@@ -22,8 +22,8 @@ public class Date {
         }
     }
 
-    public Calendar getMonth() {
-        return month;
+    public Calendar getCalendar() {
+        return calendar;
     }
 
     public int getInputDay() {

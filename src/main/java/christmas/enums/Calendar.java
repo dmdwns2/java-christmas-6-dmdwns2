@@ -14,6 +14,7 @@ public enum Calendar {
     NOVEMBER(11, 30),
     DECEMBER(12, 31);
 
+    private static final int THIS_YEAR = 2023;
     private static final Calendar THIS_MONTH = DECEMBER;
     private static final int EVENT_START_DAY = 1;
     private static final int CHRISTMAS_D_DAY_EVENT_START_DAY = 1;
@@ -26,6 +27,10 @@ public enum Calendar {
     Calendar(int month, int days) {
         this.month = month;
         this.days = days;
+    }
+
+    public static int getThisYear() {
+        return THIS_YEAR;
     }
 
     public static Calendar getThisMonth() {

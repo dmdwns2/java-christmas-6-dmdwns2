@@ -28,12 +28,18 @@ public class EventPlanner {
         output.printIntro();
         Date date = dateService.create(input.readDate());
         Order order = orderService.create(input.readOrder());
-        output.printPreview(date.getMonth(), date.getInputDay());
+        output.printPreview(date.getCalendar(), date.getInputDay());
         output.printMenus(order);
         int totalPriceBeforeDiscount = orderService.calculateTotalPriceBeforeDiscount(order);
         output.printTotalPriceBeforDiscount(totalPriceBeforeDiscount);
+        discount(totalPriceBeforeDiscount, date, order);
+    }
+
+    private void discount(int totalPriceBeforeDiscount, Date date, Order order) {
         boolean isGift = discountService.isGift(totalPriceBeforeDiscount);
         output.printGiftMenu(isGift);
         int priceAfterChristmasDDayDiscount = discountService.christmasDDay(date);
+        int priceAfterWeekdayDiscount = discountService.weekday(date, order);
+        int priceAfterWeekendDiscount = discountService.weekend(date, order);
     }
 }
