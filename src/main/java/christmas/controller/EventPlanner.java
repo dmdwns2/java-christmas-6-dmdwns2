@@ -32,7 +32,7 @@ public class EventPlanner {
         output.printIntro();
         Date date = dateService.create(input.readDate());
         Order order = orderService.create(input.readOrder());
-        int totalPriceBeforeDiscount = orderService.calculateTotalPriceBeforeDiscount(order);
+        int totalPriceBeforeDiscount = calculator.calculateTotalPriceBeforeDiscount(order);
         output.printPreview(date.getCalendar(), date.getInputDay());
         output.printMenus(order);
         output.printTotalPriceBeforDiscount(totalPriceBeforeDiscount);

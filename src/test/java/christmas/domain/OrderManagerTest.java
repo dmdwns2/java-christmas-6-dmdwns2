@@ -37,10 +37,11 @@ class OrderManagerTest {
 
         Parser parser = new OrderParser(new Validator());
         OrderManager orderManager = new OrderManager(parser);
+        Calculator calculator = new CalculateManager();
         String input = "아이스크림-2,초코케이크-3";
 
         Order order = orderManager.create(input);
-        int totalPrice = orderManager.calculateTotalPriceBeforeDiscount(order);
+        int totalPrice = calculator.calculateTotalPriceBeforeDiscount(order);
 
         assertThat(order.getMenus()).isEqualTo(orderItems);
         assertThat(totalPrice).isEqualTo(2 * Menu.아이스크림.getPrice() + 3 * Menu.초코케이크.getPrice());

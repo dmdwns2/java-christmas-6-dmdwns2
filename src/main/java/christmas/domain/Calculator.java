@@ -1,5 +1,6 @@
 package christmas.domain;
 
+import christmas.Order;
 import christmas.enums.EventBadge;
 
 public interface Calculator {
@@ -10,4 +11,6 @@ public interface Calculator {
     int priceAfterDiscount(boolean isGift, int totalPriceBeforeDiscount, int totalBenefitsPrice);
 
     EventBadge eventBadge(int printTotalBenefitsPrice);
+
+    int calculateTotalPriceBeforeDiscount(Order order);
 }
